@@ -921,6 +921,12 @@ impl TestRunner {
     fn new_cache(&self) -> Box<dyn ResultCache> {
         (self.config.result_cache)()
     }
+
+    /// Return whether the RNG is exhausted (This only applies to PassThrough
+    /// RNGs, other RNGs cannot be exhausted and will only return `false`).
+    pub fn exhausted(&self) -> bool {
+        self.rng.exhausted()
+    }
 }
 
 #[cfg(feature = "fork")]

@@ -127,6 +127,15 @@ enum TestRngImpl {
     },
 }
 
+impl TestRngImpl {
+    pub(crate) fn exhausted(&self) -> bool {
+        match self {
+            TestRngImpl::PassThrough { off, end, data } => *off >= *end,
+            _ => false,
+        }
+    }
+}
+
 impl RngCore for TestRng {
     fn next_u32(&mut self) -> u32 {
         match &mut self.rng {
@@ -635,6 +644,10 @@ impl TestRng {
                 },
             },
         }
+    }
+
+    pub(crate) fn exhausted(&self) -> bool {
+        self.rng.exhausted()
     }
 }
 
