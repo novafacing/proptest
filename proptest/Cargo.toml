@@ -27,8 +27,13 @@ default-code-coverage = ["std", "fork", "timeout", "bit-set"]
 unstable = []
 
 # Enables the use of standard-library dependent features
-std = ["rand/std", "byteorder/std", "lazy_static",
-       "regex-syntax", "num-traits/std"]
+std = [
+       "rand/std",
+       "byteorder/std",
+       "lazy_static",
+       "regex-syntax",
+       "num-traits/std",
+]
 
 # For use in no_std environments with access to an allocator
 #alloc = ["hashmap_core"]
@@ -77,7 +82,7 @@ features = ["libm"]
 [dependencies.regex-syntax]
 # If you change this, make sure to also bump the `regex` dependency to a
 # version that also uses this version of regex-syntax.
-version = "0.6.0"
+version = "0.7.2"
 optional = true
 
 [dependencies.bit-set]
